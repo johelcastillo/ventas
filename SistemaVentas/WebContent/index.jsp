@@ -1,0 +1,1 @@
+<% response.sendRedirect("pages/procesos/home.xhtml"); %>

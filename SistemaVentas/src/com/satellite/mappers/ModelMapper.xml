@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+
+<mapper namespace='com.sivalabs.mybatisdemo.mappers.UserMapper'>
+
+
+	<select id='getModel' resultMap='rmModel'>
+		SELECT
+		model_id,
+		name,
+		description,
+		FROM MODEL
+		WHERE MODEL_id = #{MODEL_id}
+	</select>
+	
+	
+	<resultMap type='Model' id='rmModel'>
+		<id property='id_model' column='id_model' />
+		<result property='name_model' column='name_model' />
+		<result property='description_model' column='description_model' />
+	</resultMap>
+	
+	
+	
+	<select id='getAllUsers' resultMap='rmModel'>
+		SELECT * FROM MODEL
+	</select>
+	
+	<insert id='insertModel' useGeneratedKeys='true' keyProperty='userId'>
+		INSERT INTO MODEL(name, description)
+		VALUES(#{name}, #{description})
+	</insert>
+
+
+	<delete id='deleteModel'>
+		DELETE FROM MODEL WHERE MODEL = #{id}
+	</delete>
+
+</mapper>

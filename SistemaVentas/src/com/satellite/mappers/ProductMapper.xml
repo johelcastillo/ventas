@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+
+<mapper namespace='com.satellite.dao.ProductDao'>
+
+
+	<!-- Instead of referencing Fully Qualified Class Names we can register 
+		Aliases in mybatis-config.xml and use Alias names. -->
+
+
+	<sql id="columnProduct">
+		P.PRODUCT_ID ,P.COLOR,P.STOCK,D.DESIGN_ID,D.NAME AS
+		DNAME,D.DESCRIPTION AS
+		DESIGN.DESCRIPTION,M.MODEL_ID,M.NAME AS
+		MNAME,M.DESCRPTION AS
+		MDESCRIPTION,S.SUCURSAL_ID,S.NAME AS
+		SNAME,S.DESCRIPTION AS
+		SDESCRIPTION
+	</sql>
+	<sql id="tableProduct">
+		PRODUCTO P,DESIGN D,MODEL M,SUCURSAL S
+	</sql>
+	<sql id="join">
+		P.DESIGN=D.ID AND D.MODEL=M.MODEL_ID AND
+		P.SUCURSAL=S.SUCURSAL_ID
+
+	</sql>
+	
+	
+	<resultMap type="Product" id="rmProduct">
+		<id property='id_product' column='id_product' />
+		<result property='descrition_product' column='description_product' />
+		<result property="name_product" column="name_product"/>
+		
+		<association property="model" javaType="Model">
+			<id property='id_model' column='id_model' />
+			<result property='name_model' column='name_model' />
+			<result property="description_model" column="descrition_model"/>
+			
+		</association>
+	</resultMap>
+	
+	
+	
+	
+	<select id='getAllProducts' resultMap='rmProduct'>
+		SELECT
+		<include refid="columnProduct" />
+		FROM
+		<include refid="tableProduct" />
+		WHERE
+		<include refid="joinProduct" />
+	</select>
+	<select id='getProduct' resultMap='rmProduct'>
+		SELECT
+		<include refid="columnProduct" />
+		FROM
+		<include refid="tableProduct" />
+		WHERE
+		<include refid="joinProduct" />
+		AND P.PRODUCT_ID=#{id}
+	</select>
+
+	<insert id='insertProduct' useGeneratedKeys='true' keyProperty='product_id'>
+		INSERT INTO PRODUCT(name, color, stock, design, sucursal)
+		VALUES(#{name}, #{color}, #{stock}, #{design},#{sucursal})
+	</insert>
+
+
+	<delete id='deleteUser'>
+		DELETE FROM PRODUCT WHERE PRODUCT_ID = #{id}
+	</delete>
+
+</mapper>

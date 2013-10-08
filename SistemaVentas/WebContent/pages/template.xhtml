@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<title><ui:insert name="titulo"/></title>
+		<link rel="stylesheet" href="../../recursos/css/bootstrap.css"/>
+		<link rel="stylesheet" href="../../recursos/css/estilos.css"/>
+		<script src="../../recursos/js/bootstrap.js"></script>
+		<script src="../../recursos/js/jquery.js"></script>
+	</head>
+	<body>
+		<div id="header">
+			<ui:include src="../WEB-INF/facelets/templates/menu.xhtml"/>
+		</div>
+		<div id="content">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<ui:insert name="contenido"/>			  	
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+		</div>
+	</body>
+	
+</html>

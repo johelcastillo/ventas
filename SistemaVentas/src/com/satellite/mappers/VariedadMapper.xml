@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+
+<mapper namespace='com.satellite.dao.ProductDao'>
+
+ 
+
+	 
+	
+	<resultMap type="Variedad" id="rmVariedad">
+		<id property='id_color' column='id_color' />
+		<result property='name_colo' column='dname_color' />
+		<result property="description_color" column="description_color"/>
+		
+		<association property="model" javaType="Model">
+			<id property='id_model' column='id_model' />
+			<result property='name_model' column='name_model' />
+			<result property="description_model" column="descrition_model"/>
+			
+		</association>
+	</resultMap>
+	
+	
+</mapper>
