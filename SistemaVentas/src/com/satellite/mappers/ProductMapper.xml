@@ -10,34 +10,33 @@
 
 
 	<sql id="columnProduct">
-		P.PRODUCT_ID ,P.COLOR,P.STOCK,D.DESIGN_ID,D.NAME AS
-		DNAME,D.DESCRIPTION AS
-		DESIGN.DESCRIPTION,M.MODEL_ID,M.NAME AS
-		MNAME,M.DESCRPTION AS
-		MDESCRIPTION,S.SUCURSAL_ID,S.NAME AS
-		SNAME,S.DESCRIPTION AS
-		SDESCRIPTION
+		P.ID_PRODUCT ,P.NAME_PRODUCT,P.DESCRIPTION_PRODUCT,
+		D.ID_DESIGND,D.NAME_DESIGN ,D.DESCRIPTION ,M.MODEL_ID,M.NAME_MODEL 
+		MNAME,M.DESCRPTION 
+		
 	</sql>
 	<sql id="tableProduct">
-		PRODUCTO P,DESIGN D,MODEL M,SUCURSAL S
+		PRODUCTO P,DESIGN D,MODEL M
 	</sql>
 	<sql id="join">
-		P.DESIGN=D.ID AND D.MODEL=M.MODEL_ID AND
-		P.SUCURSAL=S.SUCURSAL_ID
+		P.DESIGN=D.ID AND P.MODEL=M.MODEL_ID 
 
 	</sql>
 	
 	
 	<resultMap type="Product" id="rmProduct">
 		<id property='id_product' column='id_product' />
-		<result property='descrition_product' column='description_product' />
 		<result property="name_product" column="name_product"/>
-		
+		<result property='descrition_product' column='description_product' />
 		<association property="model" javaType="Model">
 			<id property='id_model' column='id_model' />
 			<result property='name_model' column='name_model' />
-			<result property="description_model" column="descrition_model"/>
-			
+			<result property="description_model" column="descrition_model"/>	
+		</association>
+		<association property="design" javaType="Design">
+			<id property='id_design' column='id_design' />
+			<result property='name_design' column='name_design' />
+			<result property="description_design" column="description_design"/>	
 		</association>
 	</resultMap>
 	
@@ -63,13 +62,14 @@
 	</select>
 
 	<insert id='insertProduct' useGeneratedKeys='true' keyProperty='product_id'>
-		INSERT INTO PRODUCT(name, color, stock, design, sucursal)
-		VALUES(#{name}, #{color}, #{stock}, #{design},#{sucursal})
+	<selectKey keyProperty="id" resultType="int" order="BEFORE">
+    SELECT COALESCE(MAX(ID_DESIGN),0)+1 FROM PRODUCT
+  </selectKey>
+		INSERT INTO PRODUCT(id_product, name_product,description_product, model_id, design_id)
+		VALUES(#{id},#{name_product}, #{description_product},#{model.id}, #{design.id})
 	</insert>
-
-
-	<delete id='deleteUser'>
-		DELETE FROM PRODUCT WHERE PRODUCT_ID = #{id}
+	<delete id='deleteProductById'>
+		DELETE FROM PRODUCT WHERE ID_PRODUCT = #{id}
 	</delete>
 
 </mapper>

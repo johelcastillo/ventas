@@ -6,8 +6,8 @@ import org.apache.ibatis.type.Alias;
 public class Model {
 
 	int id_model;
-	String name_product;
-	String descripcion_product;
+	String name_model;
+	String descripcion_model;
 	
 
 	public int getId_model() {
@@ -19,43 +19,23 @@ public class Model {
 	}
 
 	public String getName_product() {
-		return name_product;
+		return name_model;
 	}
 
 	public void setName_product(String name_product) {
-		this.name_product = name_product;
+		this.name_model = name_product;
 	}
 
 	public String getDescripcion_product() {
-		return descripcion_product;
+		return descripcion_model;
 	}
 
 	public void setDescripcion_product(String descripcion_product) {
-		this.descripcion_product = descripcion_product;
+		this.descripcion_model = descripcion_product;
 	}
 
-	public int getId() {
-		return id_model;
-	}
 
-	public void setId(int id) {
-		this.id_model = id;
-	}
 
-	public String getName() {
-		return name_product;
-	}
-
-	public void setName(String name) {
-		this.name_product = name;
-	}
-
-	public String getDescripcion() {
-		return descripcion_product;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion_product = descripcion;
-	}
+	
 
 }

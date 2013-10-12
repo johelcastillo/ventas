@@ -2,15 +2,17 @@ package com.satellite.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.satellite.domain.Design;
-import com.satellite.domain.Model;
+
 
  public interface DesignDao {
 	
 	
-	void insertDesign(Design modelo) ;
+	void insertDesign(@Param("diseno")Design diseno) ;
 	List<Design> getAllDesign();
-	Model getDesign(Integer id);
-	void deleteDesign(Integer id);
-	List<Design> getDesignforModel(Integer design);
+	Design getDesignById(@Param("id")Integer id);
+	void deleteDesign(@Param("id")Integer id);
+	//List<Design> getDesignforModel(Integer design);
 }

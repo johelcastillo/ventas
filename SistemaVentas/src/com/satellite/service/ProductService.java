@@ -18,7 +18,7 @@ public class ProductService {
 	
 	@Transactional
 	void insertProduct(Product product) {
-		
+		productdao.insertProduct(product);
 		
 	};
 	public List<Product> getAllProduct() {

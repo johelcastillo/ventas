@@ -2,13 +2,15 @@ package com.satellite.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.satellite.domain.Model;
 
-interface ModelDao  {
+public interface ModelDao  {
 	
-	void insertModel(Model modelo) ;
+	void insertModel(@Param("modelo")Model modelo) ;
 	List<Model> getAllModel();
-	Model getModel(Integer id);
-	void deleteModel(Integer id);
+	Model getModel(@Param("id") Integer id);
+	void deleteModel(@Param("id") Integer id);
 
 }

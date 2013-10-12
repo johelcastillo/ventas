@@ -5,13 +5,9 @@
 <mapper namespace='com.sivalabs.mybatisdemo.mappers.UserMapper'>
 
 
-	<select id='getModel' resultMap='rmModel'>
-		SELECT
-		model_id,
-		name,
-		description,
-		FROM MODEL
-		WHERE MODEL_id = #{MODEL_id}
+	<select id='getModelById' resultMap='rmModel'>
+		SELECT * FROM MODEL
+		WHERE id_model=#{id}	
 	</select>
 	
 	

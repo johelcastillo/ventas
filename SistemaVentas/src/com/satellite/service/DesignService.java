@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.satellite.dao.DesignDao;
 import com.satellite.domain.Design;
@@ -15,6 +16,7 @@ public class DesignService {
 @Autowired
  private DesignDao designdao;
 
+@Transactional
 void insertDesign(Design design) {
 	designdao.insertDesign(design);
 	
@@ -33,11 +35,6 @@ void deleteDesign(Integer id){
 	designdao.deleteDesign(id);
 	
 };
-List<Design> getDesignforModel(Integer model){
-	
-	return designdao.getDesignforModel(model);
-	
-		
-};
+
 
 }

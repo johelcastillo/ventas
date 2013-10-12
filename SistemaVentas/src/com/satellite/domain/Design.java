@@ -2,37 +2,35 @@ package com.satellite.domain;
 
 import org.apache.ibatis.type.Alias;
 
-@Alias(value = "Design")
+@Alias("Design")
 public class Design {
 
-	
-	Integer id;
+	Integer id_design;
 	String name_design;
-	String descripcion;
-	Model model;
-	public Integer getId() {
-		return id;
+	String descripction_design;
+
+	public Integer getId_design() {
+		return id_design;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+
+	public void setId_design(Integer id_design) {
+		this.id_design = id_design;
 	}
-	public String getName() {
+
+	public String getName_design() {
 		return name_design;
 	}
-	public void setName(String name) {
-		this.name_design = name;
+
+	public void setName_design(String name_design) {
+		this.name_design = name_design;
 	}
-	public String getDescripcion() {
-		return descripcion;
+
+	public String getDescripction_design() {
+		return descripction_design;
 	}
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-	public Model getModel() {
-		return model;
-	}
-	public void setModel(Model model) {
-		this.model = model;
+
+	public void setDescripction_design(String descripction_design) {
+		this.descripction_design = descripction_design;
 	}
 
 }
