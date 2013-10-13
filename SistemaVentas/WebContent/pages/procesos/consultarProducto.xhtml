@@ -2,12 +2,41 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html 	xmlns="http://www.w3.org/1999/xhtml"
 		xmlns:ui="http://java.sun.com/jsf/facelets"
-		xmlns:jsf="http://xmlns.jcp.org/jsf">
+		xmlns:jsf="http://xmlns.jcp.org/jsf"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html">
 		
 	<ui:composition template="../template.xhtml">
 		<ui:define name="tituo">Consulta</ui:define>
 		<ui:define name="contenido">
 			PAGINA EN CONSTRUCCION..!!
+			<h:dataTable value="#{designController.listadisenos}" var="o"
+    			styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row"
+    		>
+ 
+    			<h:column>
+    				<!-- column header -->
+    				<f:facet name="header">Order No</f:facet>
+    				<!-- row record -->
+    				#{o.id_design}
+    			</h:column>
+ 
+    			<h:column>
+    				<f:facet name="header">Product Name</f:facet>
+    				#{o.name_design}
+    			</h:column>
+    			<h:column>
+    				<f:facet name="header">Product Description</f:facet>
+    				#{o.description_design}
+    			</h:column>
+ 
+    			
+ 
+    			
+ 
+    		</h:dataTable>
 		</ui:define>
 	</ui:composition>
 	

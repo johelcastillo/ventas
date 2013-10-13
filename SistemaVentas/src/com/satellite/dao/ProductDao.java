@@ -10,8 +10,8 @@ import com.satellite.domain.Product;
 
 public interface ProductDao {
 	
-	void insertProduct(@Param("producto")Product producto) ;
-	List<Product> getAllProduct();
+	public void insertProduct(@Param("producto")Product producto) ;
+	public List<Product> getAllProduct();
 	Product getProduct(@Param("id")Integer id);
 	void deleteProduct(@Param("id") Integer id);
 

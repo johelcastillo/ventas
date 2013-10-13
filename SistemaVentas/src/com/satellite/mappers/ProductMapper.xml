@@ -18,7 +18,7 @@
 	<sql id="tableProduct">
 		PRODUCTO P,DESIGN D,MODEL M
 	</sql>
-	<sql id="join">
+	<sql id="joinProduct">
 		P.DESIGN=D.ID AND P.MODEL=M.MODEL_ID 
 
 	</sql>
@@ -43,7 +43,7 @@
 	
 	
 	
-	<select id='getAllProducts' resultMap='rmProduct'>
+	<select id='getAllProduct' resultMap='rmProduct'>
 		SELECT
 		<include refid="columnProduct" />
 		FROM

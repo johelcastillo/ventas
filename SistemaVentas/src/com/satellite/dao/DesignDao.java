@@ -10,9 +10,9 @@ import com.satellite.domain.Design;
  public interface DesignDao {
 	
 	
-	void insertDesign(@Param("diseno")Design diseno) ;
-	List<Design> getAllDesign();
-	Design getDesignById(@Param("id")Integer id);
-	void deleteDesign(@Param("id")Integer id);
+	public void insertDesign(@Param("diseno")Design diseno) ;
+	public List<Design> getAllDesign();
+	public Design getDesignById(@Param("id")Integer id);
+	public void deleteDesign(@Param("id")Integer id);
 	//List<Design> getDesignforModel(Integer design);
 }

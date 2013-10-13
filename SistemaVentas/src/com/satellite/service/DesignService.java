@@ -8,8 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.satellite.dao.DesignDao;
 import com.satellite.domain.Design;
-
-
+public class DesignService {
+/*
 @Service
 public class DesignService {
 	
@@ -35,6 +35,6 @@ void deleteDesign(Integer id){
 	designdao.deleteDesign(id);
 	
 };
-
+*/
 
 }

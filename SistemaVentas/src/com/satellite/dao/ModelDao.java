@@ -8,9 +8,9 @@ import com.satellite.domain.Model;
 
 public interface ModelDao  {
 	
-	void insertModel(@Param("modelo")Model modelo) ;
-	List<Model> getAllModel();
-	Model getModel(@Param("id") Integer id);
+	public void insertModel(@Param("modelo")Model modelo) ;
+	public List<Model> getAllModel();
+	public Model getModel(@Param("id") Integer id);
 	void deleteModel(@Param("id") Integer id);
 
 }

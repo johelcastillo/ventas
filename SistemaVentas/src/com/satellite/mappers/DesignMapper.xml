@@ -2,25 +2,25 @@
 <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
   'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
 
-<mapper namespace='com.sivalabs.mybatisdemo.mappers.UserMapper'>
+<mapper namespace='com.satellite.dao.DesignDao'>
 
-
+ 
 <!--reusables  -->
 	<sql id="columnDesign">
-	D.design_id ,D.name,D.description,M.model_id,M.name,M.description
+	D.design_id ,D.name_design,D.description_design,M.model_id,M.name_model,M.description_model
 	</sql>
 	<sql id="tableDesign">
-	design D, model M
+	design D
 	</sql>
 
-	<resultMap type='Design' id='rmDesign'>
+	 <resultMap type="Design" id='rmDesign'>
 		<id property='id_design' column='id_design' />
 		<result property='name_design' column='name_design' />
 		<result property='description_design' column='description_design' />
-	</resultMap>
+	</resultMap> 
 	
 	
-	<select id='getAllDesign' resultMap='rmDesign'>
+	<select id="getAllDesign" resultMap='rmDesign'>
 		SELECT * FROM DESIGN	
 	</select>
 	<select id="getDesign" resultMap='rmDesign'>
@@ -28,17 +28,17 @@
 		WHERE ID_DESIGN=#{id} 
 	</select>
 
-	<insert id='insertDesign' useGeneratedKeys='true' keyProperty='userId'>
+	<insert id='insertDesign' >
 	<selectKey keyProperty="id" resultType="int" order="BEFORE">
     SELECT COALESCE(MAX(ID_DESIGN),0) FROM DESIGN
   </selectKey>
 		INSERT INTO DESIGN(id_design,name_design, description_design)
-		VALUES(#{id}, #{name}, #{description})
+		VALUES(#{id_design}, #{name_design}, #{description_design})
 	</insert>
 
 
 	<delete id='deleteDesign'>
-		DELETE FROM DESIGN WHERE DESIGN_ID = #{id}
+		DELETE FROM DESIGN WHERE ID_DESIGN = #{id}
 	</delete>
 
 </mapper>

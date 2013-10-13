@@ -10,9 +10,9 @@ import com.satellite.dao.ProductDao;
 import com.satellite.domain.Product;
 
 
-@Service
+
 public class ProductService {
-	
+	/*
 	@Autowired
 	ProductDao productdao;
 	
@@ -33,5 +33,5 @@ public class ProductService {
 	public void deleteProduct(Integer id){
 		productdao.deleteProduct(id);
 		
-	};
+	};*/
 }

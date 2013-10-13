@@ -1,8 +1,8 @@
 package com.satellite.domain;
 
-import org.apache.ibatis.type.Alias;
+//import org.apache.ibatis.type.Alias;
 
-@Alias("Produc_Tipo")
+//@Alias("Produc_Tipo")
 public class Product_tipo {
 
 	private Integer id_product_tipo;

@@ -1,9 +1,9 @@
 package com.satellite.domain;
 
-import org.apache.ibatis.type.Alias;
+//import org.apache.ibatis.type.Alias;
 
 
-@Alias("Variedad")
+//@Alias("Variedad")
 public class Variedad {
 	private Integer id_color;
 	private  String description_color;

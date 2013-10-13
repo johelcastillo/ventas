@@ -8,7 +8,7 @@ import com.satellite.dao.ModelDao;
 import com.satellite.domain.Model;
 
 public class ModelService {
-	@Autowired
+	/*@Autowired
 	private ModelDao modeldao;
 	
 	@Transactional
@@ -30,6 +30,6 @@ public class ModelService {
 	void deleteModel(Integer id){
 		modeldao.deleteModel(id);
 		
-	};
+	};*/
 
 }
