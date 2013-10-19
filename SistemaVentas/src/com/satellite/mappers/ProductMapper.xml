@@ -11,15 +11,15 @@
 
 	<sql id="columnProduct">
 		P.ID_PRODUCT ,P.NAME_PRODUCT,P.DESCRIPTION_PRODUCT,
-		D.ID_DESIGND,D.NAME_DESIGN ,D.DESCRIPTION ,M.MODEL_ID,M.NAME_MODEL 
-		MNAME,M.DESCRPTION 
+		D.ID_DESIGN ,D.NAME_DESIGN ,D.DESCRIPTION_DESIGN ,M.ID_MODEL,M.NAME_MODEL 
+		,M.DESCRIPTION_MODEL
 		
 	</sql>
 	<sql id="tableProduct">
-		PRODUCTO P,DESIGN D,MODEL M
+		PRODUCT P,DESIGN D,MODEL M
 	</sql>
 	<sql id="joinProduct">
-		P.DESIGN=D.ID AND P.MODEL=M.MODEL_ID 
+		P.DESIGN_ID=D.ID_DESIGN AND P.MODEL_ID=M.ID_MODEL
 
 	</sql>
 	
@@ -27,7 +27,7 @@
 	<resultMap type="Product" id="rmProduct">
 		<id property='id_product' column='id_product' />
 		<result property="name_product" column="name_product"/>
-		<result property='descrition_product' column='description_product' />
+		<result property='description_product' column='description_product' />
 		<association property="model" javaType="Model">
 			<id property='id_model' column='id_model' />
 			<result property='name_model' column='name_model' />
@@ -58,17 +58,17 @@
 		<include refid="tableProduct" />
 		WHERE
 		<include refid="joinProduct" />
-		AND P.PRODUCT_ID=#{id}
+		AND P.ID_PRODUCT=#{id}
 	</select>
 
 	<insert id='insertProduct' parameterType="Product">
 	<selectKey keyProperty="id_product" resultType="int" order="BEFORE">
-    SELECT COALESCE(MAX(ID_DESIGN),0)+1 FROM PRODUCT
+    SELECT COALESCE(MAX(ID_PRODUCT),0)+1 FROM PRODUCT
   </selectKey>
 		INSERT INTO PRODUCT(id_product, name_product,description_product, model_id, design_id)
-		VALUES(#{id_product},#{name_product}, #{description_product},#{model.id_model}, #{design.id_design})
+	VALUES(#{id_product},#{name_product}, #{description_product},#{model.id_model}, #{design.id_design})
 	</insert>
-	<delete id='deleteProductById'>
+	<delete id='deleteProduct'>
 		DELETE FROM PRODUCT WHERE ID_PRODUCT = #{id}
 	</delete>
 
