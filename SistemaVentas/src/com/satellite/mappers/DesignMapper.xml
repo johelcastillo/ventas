@@ -23,17 +23,17 @@
 	<select id="getAllDesign" resultMap='rmDesign'>
 		SELECT * FROM DESIGN	
 	</select>
-	<select id="getDesign" resultMap='rmDesign'>
+	<select id="getDesignById" resultMap='rmDesign'>
 		SELECT * FROM DESIGN
 		WHERE ID_DESIGN=#{id} 
 	</select>
 
 	<insert id='insertDesign' >
-	<selectKey keyProperty="id" resultType="int" order="BEFORE">
-    SELECT COALESCE(MAX(ID_DESIGN),0) FROM DESIGN
+	<selectKey keyProperty="id" resultType="int" order="BEFORE" >
+    SELECT COALESCE(MAX(ID_DESIGN),0)+1 FROM DESIGN
   </selectKey>
 		INSERT INTO DESIGN(id_design,name_design, description_design)
-		VALUES(#{id_design}, #{name_design}, #{description_design})
+		VALUES(#{id}, #{design.name_design}, #{design.description_design})
 	</insert>
 
 
