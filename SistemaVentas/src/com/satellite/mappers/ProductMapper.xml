@@ -61,12 +61,12 @@
 		AND P.PRODUCT_ID=#{id}
 	</select>
 
-	<insert id='insertProduct' useGeneratedKeys='true' keyProperty='product_id'>
-	<selectKey keyProperty="id" resultType="int" order="BEFORE">
+	<insert id='insertProduct' parameterType="Product">
+	<selectKey keyProperty="id_product" resultType="int" order="BEFORE">
     SELECT COALESCE(MAX(ID_DESIGN),0)+1 FROM PRODUCT
   </selectKey>
 		INSERT INTO PRODUCT(id_product, name_product,description_product, model_id, design_id)
-		VALUES(#{id},#{name_product}, #{description_product},#{model.id}, #{design.id})
+		VALUES(#{id_product},#{name_product}, #{description_product},#{model.id_model}, #{design.id_design})
 	</insert>
 	<delete id='deleteProductById'>
 		DELETE FROM PRODUCT WHERE ID_PRODUCT = #{id}

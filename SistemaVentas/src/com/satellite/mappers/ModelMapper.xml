@@ -5,7 +5,7 @@
 <mapper namespace='com.satellite.dao.ModelDao'>
 
 
-	<select id='getModelById' resultMap='rmModel'>
+	<select id='getModel' resultMap='rmModel'>
 		SELECT * FROM MODEL
 		WHERE id_model=#{id}	
 	</select>
@@ -19,18 +19,21 @@
 	
 	
 	
-	<select id='getAllUsers' resultMap='rmModel'>
+	<select id='getAllModel' resultMap='rmModel'>
 		SELECT * FROM MODEL
 	</select>
 	
-	<insert id='insertModel' useGeneratedKeys='true' keyProperty='userId'>
-		INSERT INTO MODEL(name, description)
-		VALUES(#{name}, #{description})
+	<insert id='insertModel' parameterType="Model">
+	<selectKey keyProperty="id_model" resultType="int" order="BEFORE" >
+    SELECT COALESCE(MAX(ID_MODEL),0)+1 FROM MODEL
+  </selectKey>
+		INSERT INTO MODEL(id_model ,name_model, description_model)
+		VALUES(#{id_model},#{name_model}, #{description_model})
 	</insert>
 
 
 	<delete id='deleteModel'>
-		DELETE FROM MODEL WHERE MODEL = #{id}
+		DELETE FROM MODEL WHERE ID_MODEL = #{id}
 	</delete>
 
 </mapper>

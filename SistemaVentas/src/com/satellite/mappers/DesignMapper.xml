@@ -28,12 +28,12 @@
 		WHERE ID_DESIGN=#{id} 
 	</select>
 
-	<insert id='insertDesign' >
-	<selectKey keyProperty="id" resultType="int" order="BEFORE" >
+	<insert id='insertDesign'  parameterType="Design">
+	<selectKey keyProperty="design_id" resultType="int" order="BEFORE" >
     SELECT COALESCE(MAX(ID_DESIGN),0)+1 FROM DESIGN
   </selectKey>
 		INSERT INTO DESIGN(id_design,name_design, description_design)
-		VALUES(#{id}, #{design.name_design}, #{design.description_design})
+		VALUES(#{design_id}, #{design.name_design}, #{design.description_design})
 	</insert>
 
 
