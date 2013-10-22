@@ -1,38 +1,52 @@
 package com.satellite.controller.read;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.RequestScoped;
+
+
+import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
 
+import com.satellite.dao.DesignDao;
 import com.satellite.dao.ProductDao;
-import com.satellite.domain.Product;
-
+import com.satellite.domain.Design;
+@Controller
+@Scope("request")
 public class ReadDesignController {
 
 	
 	
 	
-List<Product> listaproductos = new ArrayList<>();
-	
-	
+
+	private List<Design> listadisenos;
+	@Autowired
+	DesignDao designDao;
 	@Autowired
 	ProductDao productDao;
 	
 	@PostConstruct
 	void init(){
-		listaproductos=(List<Product>) productDao.getAllProduct();
+		System.out.println("carajo disen");
+		listadisenos=(List<Design>) designDao.getAllDesign();
+		System.out.println(listadisenos.size()+"size");
 		
 	}
 
-	public List<Product> getListaproductos() {
-		return listaproductos;
+	public List<Design> getListadisenos() {
+		return listadisenos;
 	}
 
-	public void setListaproductos(List<Product> listaproductos) {
-		this.listaproductos = listaproductos;
+	public void setListadisenos(List<Design> listadisenos) {
+		this.listadisenos = listadisenos;
 	}
+
+
 	
 }

@@ -1,16 +1,12 @@
 package com.satellite.controller.register;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.annotation.PostConstruct;
-
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.satellite.dao.DesignDao;
 import com.satellite.domain.Design;
@@ -18,20 +14,18 @@ import com.satellite.domain.Design;
 
 @Controller
 @Scope("session")
-public class RegisterDesignController implements Serializable{
+public class RegisterDesignController {
 	
-/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
 
 @Autowired
 DesignDao designDao;	
 
-private Design diseno;
+private Design design=new Design();
 
 @PostConstruct
 private void init() {
+	
 	
 	
 }
@@ -44,18 +38,19 @@ public void setDesignDao(DesignDao designDao) {
 	this.designDao = designDao;
 }
 
-public Design getDiseno() {
-	return diseno;
+
+
+public Design getDesign() {
+	return design;
 }
 
-public void setDiseno(Design diseno) {
-	this.diseno = diseno;
+public void setDesign(Design design) {
+	this.design = design;
 }
-
-
+@Transactional
 public void saveDesign(){
 	
-	designDao.insertDesign(diseno);
+	designDao.insertDesign(design);
 	
 	
 }

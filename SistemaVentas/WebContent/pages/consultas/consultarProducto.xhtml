@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:jsf="http://xmlns.jcp.org/jsf"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html">
+		
+	<ui:composition template="../template.xhtml">
+		<ui:define name="tituo">Consulta</ui:define>
+		<ui:define name="contenido">
+			PAGINA EN CONSTRUCCION..!! aqui
+			
+			
+			<h:dataTable value="#{readProductController.listaproductos}" var="o"
+    			styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row"
+    		>
+ 
+    			<h:column>
+    				<!-- column header -->
+    				<f:facet name="header">Product No</f:facet>
+    				<!-- row record -->
+    				#{o.id_product}
+    			</h:column>
+ 
+    			<h:column>
+    				<f:facet name="header">Product Name</f:facet>
+    				#{o.name_product}
+    			</h:column>
+    			<h:column>
+    				<f:facet name="header">Product Description</f:facet>
+    				#{o.description_product}
+    			</h:column>
+ 
+    			
+ 
+    			
+ 
+    		</h:dataTable>
+    		
+		</ui:define>
+	</ui:composition>
+	
+</html>

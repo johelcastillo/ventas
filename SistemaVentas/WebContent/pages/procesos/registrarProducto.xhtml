@@ -2,7 +2,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html 	xmlns="http://www.w3.org/1999/xhtml"
 		xmlns:ui="http://java.sun.com/jsf/facelets"
-		xmlns:jsf="http://xmlns.jcp.org/jsf">
+		xmlns:jsf="http://xmlns.jcp.org/jsf"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		>
 		
 	<ui:composition template="../template.xhtml">
 		<ui:define name="titulo"> Registro </ui:define>
@@ -17,15 +20,15 @@
 									<div class="form-group">
 							    		<label for="inputEmail1" class="col-lg-2 control-label">Nombre</label>
 							    		<div class="col-lg-10">
-					      					<input type="text" class="form-control" id="inputEmail1" placeholder="Ingrese nombre" jsf:value="#{registrarController.nombre}"/>
+					      					<input type="text" class="form-control" id="inputEmail1" placeholder="Ingrese nombre" jsf:value="#{registerProductController.product.name_product}"/>
 					    				</div>
 					  				</div>
 								</div>
 								<div class="col-lg-6">
 									<div class="form-group">
-							    		<label for="inputEmail1" class="col-lg-2 control-label">Modelo</label>
+							    		<label for="inputEmail2" class="col-lg-2 control-label">Descripcion</label>
 							    		<div class="col-lg-10">
-							      			<input type="text" class="form-control" id="inputEmail1" placeholder="Ingrese modelo"/>
+							      			<input type="text" class="form-control" id="inputEmail1" placeholder="Ingrese descripcion" jsf:value="#{registerProductController.product.description_product}"/>
 							    		</div>
 							  		</div>
 								</div>
@@ -34,18 +37,19 @@
 					  		<div class="row">
 								<div class="col-lg-6">
 									<div class="form-group">
-							    		<label for="inputEmail1" class="col-lg-2 control-label">Descripcion</label>
-							    		<div class="col-lg-10">
-					      					<input type="text" class="form-control" id="inputEmail1" placeholder="Ingrese nombre"/>
-					    				</div>
+							    		<label for="inputEmail3" class="col-lg-2 control-label">Modelo</label>
+							    		<h:selectOneMenu value="#{registerProductController.model}">               
+    						<f:selectItems value="#{registerProductController.listamodelos}" var="modelo" itemLabel="#{modelo.name_model}" itemValue="#{modelo}" />
+							</h:selectOneMenu>
 					  				</div>
 								</div>
 								<div class="col-lg-6">
 									<div class="form-group">
-							    		<label for="inputEmail1" class="col-lg-2 control-label">Tipo</label>
-							    		<div class="col-lg-10">
-							      			<input type="text" class="form-control" id="inputEmail1" placeholder="Ingrese modelo"/>
-							    		</div>
+							    		<label for="inputEmail1" class="col-lg-2 control-label">Diseño</label>
+							    		<h:selectOneMenu value="#{registerProductController.design}">     
+							    		         
+    						<f:selectItems value="#{registerProductController.listadisenos}" var="diseno" itemLabel="#{diseno.name_design}" itemValue="#{diseno}" />
+							</h:selectOneMenu>
 							  		</div>
 								</div>
 							</div>
@@ -53,7 +57,7 @@
 							<div class="row">
 								<div class="col-lg-12">
 									<div class="col-lg-offset-10 col-lg-1">
-										<button class="btn btn-primary" jsf:action="#{registrarController.cargar}">Guardar</button>
+										<button class="btn btn-primary" jsf:action="#{registerProductController.saveProduct}">Guardar</button>
 									</div>
 								</div>
 								

@@ -1,10 +1,16 @@
 package com.satellite.domain;
 
+import java.io.Serializable;
+
 import org.apache.ibatis.type.Alias;
 
 @Alias("Model")
-public class Model {
+public class Model implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int id_model;
 	private String name_model;
 	private String description_model;

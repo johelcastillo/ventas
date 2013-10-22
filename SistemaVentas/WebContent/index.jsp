@@ -1,1 +1,1 @@
-<% response.sendRedirect("pages/procesos/home.xhtml"); %>
+<% response.sendRedirect("pages/commons/home.xhtml"); %>

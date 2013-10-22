@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.satellite.dao.DesignDao;
 import com.satellite.dao.ModelDao;
@@ -20,34 +21,79 @@ import com.satellite.domain.Product;
 public class RegisterProductController {
 
 	
-	private Product product;
 	
-	List<Design> disenos;
-	List<Model> modelos;
-	public List<Design> getDisenos() {
-		return disenos;
-	}
-
-	public void setDisenos(List<Design> disenos) {
-		this.disenos = disenos;
-	}
-
+	
+	
+	
+	
+	private String modelito;
+	private String disenito;
+	
+	
 	@Autowired
 	ProductDao productDao;
 	@Autowired
 	DesignDao designDao;
 	@Autowired
 	ModelDao modelDao;
+	
+
+	private Product product=new Product();
+	private Model model;
+	
+
+	private Design design;
+	private List<Design> listadisenos;
+	private List<Model> listamodelos;
+	
 
 	@PostConstruct
 	void init() {
-		disenos = (List<Design>) designDao.getAllDesign();
-		modelos=(List<Model>)modelDao.getAllModel();
+		listadisenos = (List<Design>) designDao.getAllDesign();
+		listamodelos=(List<Model>)modelDao.getAllModel();
 	}
 	
-	public void save() {
-		
-		productDao.insertProduct(product);
+	@Transactional
+	public void saveProduct() {
+		product.setModel(model);
+		product.setDesign(design);
+		System.out.println("carajo que webon");
+	productDao.insertProduct(product);
+		//System.out.println(product.getId_product()+" producto "+product.getDescription_product());
+	}
+
+
+	public List<Design> getListadisenos() {
+		return listadisenos;
+	}
+
+	public void setListadisenos(List<Design> listadisenos) {
+		this.listadisenos = listadisenos;
+	}
+
+	public List<Model> getListamodelos() {
+		return listamodelos;
+	}
+
+	public void setListamodelos(List<Model> listamodelos) {
+		this.listamodelos = listamodelos;
+	}
+
+
+	public Model getModel() {
+		return model;
+	}
+
+	public void setModel(Model model) {
+		this.model = model;
+	}
+
+	public Design getDesign() {
+		return design;
+	}
+
+	public void setDesign(Design design) {
+		this.design = design;
 	}
 
 	public Product getProduct() {

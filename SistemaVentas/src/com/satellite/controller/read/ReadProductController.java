@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
 
 import com.satellite.dao.ProductDao;
 import com.satellite.domain.Product;
-
+@Controller
+@Scope("request")
 public class ReadProductController {
 List<Product> listaproductos = new ArrayList<>();
 	
@@ -19,6 +21,7 @@ List<Product> listaproductos = new ArrayList<>();
 	
 	@PostConstruct
 	void init(){
+		System.out.println("carajo product");
 		listaproductos=(List<Product>) productDao.getAllProduct();
 		
 	}
