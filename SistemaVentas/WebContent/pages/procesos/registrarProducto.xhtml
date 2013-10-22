@@ -38,17 +38,17 @@
 								<div class="col-lg-6">
 									<div class="form-group">
 							    		<label for="inputEmail3" class="col-lg-2 control-label">Modelo</label>
-							    		<h:selectOneMenu value="#{registerProductController.model}">               
-    						<f:selectItems value="#{registerProductController.listamodelos}" var="modelo" itemLabel="#{modelo.name_model}" itemValue="#{modelo}" />
+							    		<h:selectOneMenu value="#{registerProductController.model.id_model}">               
+    						<f:selectItems value="#{registerProductController.listamodelos}" var="modelo" itemLabel="#{modelo.name_model}" itemValue="#{modelo.id_model}" />
 							</h:selectOneMenu>
 					  				</div>
 								</div>
 								<div class="col-lg-6">
 									<div class="form-group">
 							    		<label for="inputEmail1" class="col-lg-2 control-label">Diseño</label>
-							    		<h:selectOneMenu value="#{registerProductController.design}">     
+							    		<h:selectOneMenu value="#{registerProductController.design.id_design}">     
 							    		         
-    						<f:selectItems value="#{registerProductController.listadisenos}" var="diseno" itemLabel="#{diseno.name_design}" itemValue="#{diseno}" />
+    						<f:selectItems value="#{registerProductController.listadisenos}" var="diseno" itemLabel="#{diseno.name_design}" itemValue="#{diseno.id_design}" />
 							</h:selectOneMenu>
 							  		</div>
 								</div>

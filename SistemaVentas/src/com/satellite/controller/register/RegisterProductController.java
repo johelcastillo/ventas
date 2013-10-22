@@ -25,11 +25,6 @@ public class RegisterProductController {
 	
 	
 	
-	
-	private String modelito;
-	private String disenito;
-	
-	
 	@Autowired
 	ProductDao productDao;
 	@Autowired
@@ -39,10 +34,10 @@ public class RegisterProductController {
 	
 
 	private Product product=new Product();
-	private Model model;
+	private Model model=new Model();
 	
 
-	private Design design;
+	private Design design=new Design();
 	private List<Design> listadisenos;
 	private List<Model> listamodelos;
 	
